@@ -14,7 +14,10 @@
   },
   "lake_gradient": 0.05,
   "lagoon_depth_m": 10,
-  "lagoon_gradient": 0.02,
+  "lagoon_gradient": 0.05,
   "sea_depth_m": 30,
-  "sea_gradient": 0.05
+  "sea_gradient": 0.05,
+  "lagoon_distance_smoothing_m": 25,
+  "lagoon_shore_transition_m": 25,
+  "lagoon_shore_gradient": 0.01
 }

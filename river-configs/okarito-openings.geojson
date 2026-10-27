@@ -1,0 +1,392 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "",
+        "objectid": 676,
+        "length_m": 44.46856368242375,
+        "shared_lake_fraction": 1.0,
+        "outward_elevations": [
+          56.79618835449219,
+          49.56524658203125,
+          49.2913703918457,
+          59.1685905456543
+        ],
+        "mid_elevation": 58.06632995605469,
+        "kind": "lake",
+        "outside_lake": true,
+        "water_level_m": 48.0,
+        "adjoining_water_name": "Lake Wahapo",
+        "evidence": "Entire exterior edge shared with mapped lake boundary within 5 cm; outward probe lies inside adjoining lake",
+        "status": "selected for polygon trial"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            170.24425637455,
+            -43.2526053455249
+          ],
+          [
+            170.243775809792,
+            -43.2527972444722
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "",
+        "objectid": 676,
+        "length_m": 18.63482091717777,
+        "shared_lake_fraction": 1.0,
+        "outward_elevations": [
+          48.139190673828125,
+          46.979671478271484,
+          47.30111312866211,
+          44.92507553100586
+        ],
+        "mid_elevation": 48.175079345703125,
+        "kind": "lake",
+        "outside_lake": true,
+        "water_level_m": 46.9900016784668,
+        "adjoining_water_name": "Unnamed lake 5023969",
+        "evidence": "Entire exterior edge shared with mapped lake boundary within 5 cm; outward probe lies inside adjoining lake",
+        "status": "selected for polygon trial"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            170.239983031817,
+            -43.2491158043751
+          ],
+          [
+            170.24016033755,
+            -43.2490093320114
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "",
+        "objectid": 676,
+        "length_m": 16.171386312236617,
+        "shared_lake_fraction": 1.0,
+        "outward_elevations": [
+          48.963924407958984,
+          47.56254196166992,
+          48.74940872192383,
+          45.26043701171875
+        ],
+        "mid_elevation": 49.78211212158203,
+        "kind": "lake",
+        "outside_lake": true,
+        "water_level_m": 46.9900016784668,
+        "adjoining_water_name": "Unnamed lake 5023969",
+        "evidence": "Entire exterior edge shared with mapped lake boundary within 5 cm; outward probe lies inside adjoining lake",
+        "status": "selected for polygon trial"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            170.24016033755,
+            -43.2490093320114
+          ],
+          [
+            170.240315987233,
+            -43.24891854471969
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Waitangitaona River",
+        "objectid": 734,
+        "length_m": 30.08678050622202,
+        "shared_lake_fraction": 1.0,
+        "outward_elevations": [
+          47.29655075073242,
+          46.83335876464844,
+          46.34000015258789,
+          46.34000015258789
+        ],
+        "mid_elevation": 47.43696975708008,
+        "kind": "lake",
+        "outside_lake": true,
+        "water_level_m": 48.0,
+        "adjoining_water_name": "Lake Wahapo",
+        "evidence": "Entire exterior edge shared with mapped lake boundary within 5 cm; outward probe lies inside adjoining lake",
+        "status": "selected for polygon trial"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            170.274966956263,
+            -43.2474949046866
+          ],
+          [
+            170.274934119859,
+            -43.2472251565662
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "\u014ck\u0101rito River",
+        "objectid": 846,
+        "length_m": 35.660046957079814,
+        "shared_lake_fraction": 1.0,
+        "outward_elevations": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "mid_elevation": null,
+        "kind": "lake",
+        "outside_lake": true,
+        "water_level_m": 82.0,
+        "adjoining_water_name": "Lake Mapourika",
+        "evidence": "Entire exterior edge shared with mapped lake boundary within 5 cm; outward probe lies inside adjoining lake",
+        "status": "selected for polygon trial"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            170.220123295969,
+            -43.2932277085868
+          ],
+          [
+            170.219783709071,
+            -43.293024002483605
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "\u014ck\u0101rito River",
+        "objectid": 846,
+        "length_m": 24.408682757829748,
+        "shared_lake_fraction": 1.0,
+        "outward_elevations": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "mid_elevation": null,
+        "kind": "lake",
+        "outside_lake": true,
+        "water_level_m": 82.0,
+        "adjoining_water_name": "Lake Mapourika",
+        "evidence": "Entire exterior edge shared with mapped lake boundary within 5 cm; outward probe lies inside adjoining lake",
+        "status": "selected for polygon trial"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            170.219783709071,
+            -43.293024002483605
+          ],
+          [
+            170.219554747465,
+            -43.292881530908204
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "\u014ck\u0101rito River",
+        "objectid": 846,
+        "length_m": 41.05763704869164,
+        "shared_lake_fraction": 1.0,
+        "outward_elevations": [
+          null,
+          null,
+          null,
+          null
+        ],
+        "mid_elevation": null,
+        "kind": "lake",
+        "outside_lake": true,
+        "water_level_m": 82.0,
+        "adjoining_water_name": "Lake Mapourika",
+        "evidence": "Entire exterior edge shared with mapped lake boundary within 5 cm; outward probe lies inside adjoining lake",
+        "status": "selected for polygon trial"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            170.219554747465,
+            -43.292881530908204
+          ],
+          [
+            170.219150678117,
+            -43.29265913859881
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "\u014ck\u0101rito River",
+        "objectid": 1650,
+        "length_m": 23.446549052606464,
+        "shared_lake_fraction": 1.0,
+        "outward_elevations": [
+          0.6876874566078186,
+          0.8042102456092834,
+          0.6574810743331909,
+          -0.6127357482910156
+        ],
+        "mid_elevation": 0.5491989850997925,
+        "kind": "lake",
+        "outside_lake": true,
+        "water_level_m": 0.0,
+        "adjoining_water_name": "\u014ck\u0101rito Lagoon",
+        "evidence": "Entire exterior edge shared with mapped lake boundary within 5 cm; outward probe lies inside adjoining lake",
+        "status": "selected for polygon trial"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            170.206336374445,
+            -43.222584495447606
+          ],
+          [
+            170.20661586143103,
+            -43.2225319153328
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "\u014ck\u0101rito River",
+        "objectid": 1651,
+        "length_m": 44.540081195689595,
+        "shared_lake_fraction": 1.0,
+        "outward_elevations": [
+          -0.5825153589248657,
+          -0.592095673084259,
+          0.7311335802078247,
+          0.7883342504501343
+        ],
+        "mid_elevation": -0.598852813243866,
+        "kind": "lake",
+        "outside_lake": true,
+        "water_level_m": 0.0,
+        "adjoining_water_name": "\u014ck\u0101rito Lagoon",
+        "evidence": "Entire exterior edge shared with mapped lake boundary within 5 cm; outward probe lies inside adjoining lake",
+        "status": "selected for polygon trial"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            170.207987855957,
+            -43.2174269660577
+          ],
+          [
+            170.20778202638,
+            -43.21705539022399
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "\u014ck\u0101rito River",
+        "objectid": 1651,
+        "length_m": 69.10324151670319,
+        "shared_lake_fraction": 1.0,
+        "outward_elevations": [
+          -0.5799999833106995,
+          -0.5799999833106995,
+          -0.5799999833106995,
+          -0.5799999833106995
+        ],
+        "mid_elevation": -0.5799999833106995,
+        "kind": "lake",
+        "outside_lake": true,
+        "water_level_m": 0.0,
+        "adjoining_water_name": "\u014ck\u0101rito Lagoon",
+        "evidence": "Entire exterior edge shared with mapped lake boundary within 5 cm; outward probe lies inside adjoining lake",
+        "status": "selected for polygon trial"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            170.209408918042,
+            -43.21315352441779
+          ],
+          [
+            170.20979991180903,
+            -43.2126011575408
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Otatoki Creek",
+        "objectid": 2360,
+        "length_m": 93.07240918652303,
+        "shared_lake_fraction": 1.0,
+        "outward_elevations": [
+          -0.5799999833106995,
+          -0.5799999833106995,
+          -0.5799999833106995,
+          -0.5799999833106995
+        ],
+        "mid_elevation": -0.5799999833106995,
+        "kind": "lake",
+        "outside_lake": true,
+        "water_level_m": 0.0,
+        "adjoining_water_name": "\u014ck\u0101rito Lagoon",
+        "evidence": "Entire exterior edge shared with mapped lake boundary within 5 cm; outward probe lies inside adjoining lake",
+        "status": "selected for polygon trial"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            170.265953047014,
+            -43.1716944047352
+          ],
+          [
+            170.26537396721,
+            -43.1709717658165
+          ]
+        ]
+      }
+    }
+  ],
+  "attribution": "LINZ River Name Polygons Pilot and Topo50 lake polygons, CC BY 4.0.",
+  "scope": "Only these explicit polygon edges are excluded; not a universal automatic mouth classifier."
+}

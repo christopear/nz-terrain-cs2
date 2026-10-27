@@ -82,13 +82,17 @@ def interior_window(window,size):
     return (slice(r0,r1),slice(c0,c1)),(slice(r0-r,r1-r),slice(c0-c,c1-c))
 
 
-def basin_depth(mask,spacing,maximum,dropoff,smoothing):
-    if maximum<=0 or dropoff<=0 or smoothing<0:raise ValueError('Invalid lake depth/dropoff/smoothing')
+def basin_depth(mask,spacing,maximum,dropoff,smoothing,shore_transition=0.,shore_gradient=.01):
+    if not all(np.isfinite(v) for v in [spacing,maximum,dropoff,smoothing,shore_transition,shore_gradient]) or spacing<=0 or maximum<=0 or dropoff<=0 or smoothing<0 or shore_transition<0 or shore_gradient<0:
+        raise ValueError('Invalid lake depth/dropoff/smoothing/shore parameters')
     # Half-cell correction puts zero depth at the raster shoreline, rather than
     # one complete pixel inland. Islands are holes and become shore boundaries.
     distance=np.maximum(distance_transform_edt(mask,sampling=spacing)-spacing/2,0).astype('float32')
     if smoothing:
         distance=np.minimum(distance,gaussian_filter(distance,smoothing/spacing,mode='constant'))
+    if shore_transition:
+        from water_carver.river import profile
+        return profile(distance,shore_transition,maximum,shore_gradient,maximum/dropoff)
     return maximum*np.tanh(distance/dropoff)
 
 
@@ -103,6 +107,9 @@ def water_settings(terrain,slug,options=None):
         for key in [f'{kind}_depth_m',f'{kind}_gradient']:
             if not np.isfinite(defaults[key]) or defaults[key]<=0:
                 raise ValueError(f'{key} must be finite and positive')
+    for key in ['lagoon_distance_smoothing_m','lagoon_shore_transition_m','lagoon_shore_gradient']:
+        if key in defaults and (not np.isfinite(defaults[key]) or defaults[key]<0):
+            raise ValueError(f'{key} must be finite and nonnegative')
     return defaults
 
 
@@ -158,7 +165,11 @@ def prepare_lakes(terrain,slug,location,surface,options=None):
             'water_level_m':level,'water_level_source':level_source,'dem_median_m':observed,
             'dem_p10_p90_m':np.percentile(values,[10,90]).tolist(),
             'maximum_depth_parameter_m':maximum,'depth_source':override.get('depth_source','default synthetic depth'),
-            'dropoff_m':dropoff,'grids':{}}})
+            'dropoff_m':dropoff,
+            'distance_smoothing_m':float(override.get('distance_smoothing_m',defaults.get(f'{kind}_distance_smoothing_m',defaults['distance_smoothing_m']))),
+            'shore_transition_m':float(override.get('shore_transition_m',defaults.get(f'{kind}_shore_transition_m',0.))),
+            'shore_gradient':float(override.get('shore_gradient',defaults.get(f'{kind}_shore_gradient',.01))),
+            'grids':{}}})
     masks={};targets={}
     for name,width in terrain.WIDTHS.items():
         affine=terrain.grid(location,width);spacing=width/4096
@@ -169,7 +180,7 @@ def prepare_lakes(terrain,slug,location,surface,options=None):
             test=lake_window(lake['geometry'],affine,4096)
             if test is None or not test[2].any():continue
             window=lake_window(lake['geometry'],affine,4096,padding)
-            mask=window[2];depth=basin_depth(mask,spacing,record['maximum_depth_parameter_m'],record['dropoff_m'],defaults['distance_smoothing_m'])
+            mask=window[2];depth=basin_depth(mask,spacing,record['maximum_depth_parameter_m'],record['dropoff_m'],record['distance_smoothing_m'],record['shore_transition_m'],record['shore_gradient'])
             dst,src=interior_window(window,4096);inside=mask[src]
             bed=record['water_level_m']-depth[src]
             view=targets[name][dst];owned=masks[name][dst];overlap=inside & owned
@@ -177,7 +188,7 @@ def prepare_lakes(terrain,slug,location,surface,options=None):
             record['grids'][name]={'pixels':int(inside.sum()),'deepest_synthetic_depth_m':float(depth[src][inside].max()),
                                   'lowest_bed_m':float(bed[inside].min())}
         print(f'{slug} {name}: {int(masks[name].sum())} lake pixels',flush=True)
-    report={'method':'Independent lake target = water level - max_depth * tanh(shore_distance / dropoff). Lower absolute target wins overlaps; no additive depth.',
+    report={'method':'Independent target = water level minus synthetic depth from smoothed shore distance. A configured shoreline transition smoothly ramps the initial slope to max_depth/dropoff before the tanh cap. Lower absolute target wins overlaps; no additive depth.',
             'defaults':defaults,'source':data['source'],'lagoon_source':lagoons['source'],'retrieved_utc':data['retrieved_utc'],
             'lakes':[x['report'] for x in prepared],'skipped':skipped,
             'limitations':['All basin geometry is synthetic, even where depth parameters have a published source.',

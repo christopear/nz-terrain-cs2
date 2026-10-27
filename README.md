@@ -25,6 +25,24 @@ reproducible dependency versions. Native GIS dependencies normally come from
 Python wheels on supported platforms; platforms without compatible wheels may
 need system GDAL/PROJ libraries and a compiler.
 
+## Water-carver package (new foundation)
+
+[`packages/water-carver`](packages/water-carver/README.md) is an independent uv
+workspace package for generic polygon-to-bed generation. It accepts metre-based
+geometry, a raster grid, reference water elevations and configurable depth
+profiles. It returns a water mask, depths and absolute bed elevations.
+
+```sh
+uv sync --all-packages --locked
+uv run --package water-carver python -m unittest discover -s packages/water-carver/tests -v
+uv build --package water-carver
+```
+
+The experimental polygon-river pipeline uses its river profile; legacy build
+commands remain available. Lake and seabed generation retain their existing
+pipeline. Terrain inference and hydraulic behaviour remain experimental. See the package README for a
+complete Python example, profile definitions and open-boundary handling.
+
 ## Usage
 
 ```sh
@@ -41,7 +59,7 @@ uv run nz-terrain footprints --all
 # Set synthetic water-bed defaults (gradient is metres per metre)
 uv run nz-terrain --location jamestown --with-rivers \
   --default-lake-depth 30 --default-lake-gradient 0.05 \
-  --default-lagoon-depth 10 --default-lagoon-gradient 0.02
+  --default-lagoon-depth 10 --default-lagoon-gradient 0.05
 
 # Rebuild rivers against an existing, matching baseline
 uv run nz-terrain-rivers --location jamestown --minimum-river-width 5
@@ -149,3 +167,48 @@ File validation does not establish successful in-game water flow.
 The `.gitignore` starts from [GitHub's Python template](https://github.com/github/gitignore/blob/main/Python.gitignore),
 with project-specific cache, output and local-tool exclusions. Keep `uv.lock`
 tracked when changing dependencies.
+
+## Jamestown river development
+
+The [lower-Hollyford river lab](docs/river-lab.md) isolates river diagnostics from
+sea/lake generation. Run `uv run nz-terrain-river-lab` against an existing
+Jamestown baseline, or pass `--baseline-root /path/to/existing/checkout` from a
+worktree. It measures polygon-derived widths and original terrain cross-sections;
+it does not yet implement the replacement carver or change map packages.
+
+
+### Jamestown polygon-river trial
+
+For the selected 10 m river profile with existing lake/seabed beds, use the
+[polygon trial commands](docs/river-lab.md#current-polygon-carver-experiment).
+The package is written to `output/jamestown-polygon-rivers/`. This is separate
+from the legacy centreline `--with-rivers` build and requires a matching cached
+Jamestown baseline. Import both PNGs from the same generated package.
+
+The polygon trial also supports `--location okarito`, `--location jackson-bay`
+and `--location takaka` on both `nz_terrain.river.polygon_build` and
+`nz_terrain.river.review_package`. See the [preset instructions](docs/river-lab.md#additional-polygon-trial-presets).
+Packages are written to `output/<location>-polygon-rivers/`.
+
+
+### Reviewed Jamestown river connectors
+
+The accepted connected-river export adds only the **two Awarua and five McKenzie
+polygon-gap channels** to the polygon-river baseline. Broad inferred tributaries
+were trialled and rejected; they are excluded from the preferred export.
+
+After generating the matching Jamestown baseline and polygon-river package:
+
+```sh
+uv run python experiments/river_connectors/network_trial.py
+uv run python experiments/river_connectors/select_reviewed.py
+uv run python experiments/river_connectors/build_heightmaps.py
+uv run python experiments/river_connectors/review_network.py
+```
+
+Output: `output/jamestown-connected-rivers/`, including both heightmaps, previews,
+reports and a ZIP. The selector retains only the reviewed polygon pairs; the
+builder defaults to that selection. Connectors use linear endpoint widths and
+20 m addition-only join smoothing. See the [experiment documentation](experiments/river_connectors/README.md)
+for geometry trials, limitations and validation. Generated output and downloaded
+DEM caches remain ignored by Git.

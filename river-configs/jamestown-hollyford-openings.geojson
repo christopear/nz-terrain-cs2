@@ -1,0 +1,63 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sea-mouth candidate",
+        "exterior_segment_index": 132,
+        "length_m": 174.38098991367733,
+        "route_crossing_angle_deg": 87.47142446478388,
+        "lake_boundary_shared_m": 0.0,
+        "route_distance_to_downstream_end_m": 77.2068282285909,
+        "status": "diagnostic candidate; not used by production generation",
+        "evidence": "Exterior crossing near downstream OSM route endpoint; coastal location. Not verified against a separate sea polygon."
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            168.001410894854,
+            -44.3367695238997
+          ],
+          [
+            168.002214056739,
+            -44.3353125253385
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lake McKerrow connection",
+        "exterior_segment_index": 317,
+        "length_m": 121.056567907672,
+        "route_crossing_angle_deg": 80.43698496769238,
+        "lake_boundary_shared_m": 121.056567907672,
+        "route_distance_to_downstream_end_m": 6595.871298419559,
+        "status": "diagnostic candidate; not used by production generation",
+        "evidence": "Exact shared boundary with Lake McKerrow"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            168.0201342464,
+            -44.3860554397124
+          ],
+          [
+            168.019283602903,
+            -44.3869560587371
+          ]
+        ]
+      }
+    }
+  ],
+  "source": "river-configs/jamestown-hollyford-polygons.geojson",
+  "source_sha256": "00a58a86dad5f29e2b663cdeb5d1a043e6c163e936feaca97a55fa4488f726ba",
+  "route_sha256": "4a454b7062203086dff5f0fdc4d792b2483ae19fab5842c9be630f7ddacc9d26",
+  "lake_baseline_sha256": "038f90e1048d7f53d1988bccf63daa0901eda570cf7f9ee527f4d2d2a5a49b84",
+  "attribution": "LINZ polygon CC BY 4.0; crossing evidence OpenStreetMap contributors ODbL 1.0",
+  "scope": "Two Hollyford diagnostic opening candidates, not an automatic rule for other rivers."
+}

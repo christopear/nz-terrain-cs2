@@ -1,0 +1,77 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "",
+        "objectid": 1470,
+        "length_m": 30.908225065731195,
+        "shared_lake_fraction": 1.0,
+        "outward_elevations": [
+          14.932000160217285,
+          14.931845664978027,
+          14.932000160217285,
+          14.932000160217285
+        ],
+        "mid_elevation": 14.93155288696289,
+        "kind": "lake",
+        "outside_lake": true,
+        "water_level_m": 12.0,
+        "adjoining_water_name": "Lake Ellery",
+        "evidence": "Entire exterior edge shared with mapped lake boundary within 5 cm; outward probe lies inside adjoining lake",
+        "status": "selected for polygon trial"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            168.678504970328,
+            -44.0669383976171
+          ],
+          [
+            168.678726509606,
+            -44.0667106659552
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Arawhata River",
+        "objectid": 4956,
+        "length_m": 324.9444242861394,
+        "shared_lake_fraction": 0.0,
+        "outward_elevations": [
+          -1.399999976158142,
+          -1.399999976158142,
+          -1.399999976158142,
+          -1.399999976158142
+        ],
+        "mid_elevation": -1.399999976158142,
+        "kind": "sea",
+        "outside_lake": false,
+        "water_level_m": 0.0,
+        "adjoining_water_name": "sea / estuary",
+        "status": "selected after map review",
+        "evidence": "Straight channel cutoff visible in source geometry; uncarved DEM seaward probes at 25, 75 and 150 m are below sea level; visually reviewed against baseline"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            168.669013139292,
+            -43.99385316274281
+          ],
+          [
+            168.673061992815,
+            -43.993947198430206
+          ]
+        ]
+      }
+    }
+  ],
+  "attribution": "LINZ River Name Polygons Pilot and Topo50 lake polygons, CC BY 4.0.",
+  "scope": "Only these explicit polygon edges are excluded; not a universal automatic mouth classifier."
+}

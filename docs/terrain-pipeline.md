@@ -96,7 +96,7 @@ would risk raising a riverbed into a sill at a lake entrance.
 ```sh
 uv run nz-terrain --location jamestown --with-rivers \
   --default-lake-depth=30 --default-lake-gradient=0.05 \
-  --default-lagoon-depth=10 --default-lagoon-gradient=0.02
+  --default-lagoon-depth=10 --default-lagoon-gradient=0.05
 uv run nz-terrain --all --with-rivers
 ```
 
@@ -109,14 +109,20 @@ so both stages refer to the same baseline.
 |---|---:|---:|---|
 | Sea | 30 m | 0.05 (5%) | 0 m |
 | Lake | 30 m | 0.05 (5%) | Per-lake elevation |
-| Lagoon | 10 m | 0.02 (2%) | Per-lagoon elevation |
+| Lagoon | 10 m | 1% shoreline ramping to 5% over 25 m | Per-lagoon elevation |
 
-Each domain uses `depth = D × tanh(distance × gradient / D)`. Gradients are m/m;
-0.02 means approximately 2 m of initial depth increase per 100 m from shore.
-They are bed slopes, not water-surface gradients or flow settings. Distance is
-smoothed over 14 m and accounts for island shorelines. Narrow water bodies may
-be much shallower than the ceiling. The default sea formula remains equivalent
-to `30 × tanh(distance / 600)`.
+Sea and ordinary lakes use `depth = D × tanh(distance × gradient / D)`.
+Lagoons use a smooth gradient transition from 1% at the shore to a nominal 5%
+over 25 horizontal metres, then the same tanh depth cap. Distance smoothing is
+25 m for lagoons and remains 14 m for lakes and sea. These are bed slopes, not
+water-surface gradients or flow settings. Island shorelines are retained; narrow
+water bodies may be much shallower than the ceiling. The default sea formula
+remains equivalent to `30 × tanh(distance / 600)`.
+
+Lagoon defaults are `lagoon_distance_smoothing_m: 25`,
+`lagoon_shore_transition_m: 25` and `lagoon_shore_gradient: 0.01`. A zero
+transition restores the plain tanh profile. Per-feature overrides can specify
+`distance_smoothing_m`, `shore_transition_m` and `shore_gradient`.
 
 All six `--default-{sea,lake,lagoon}-{depth,gradient}` options are available.
 Persistent defaults are in `water-configs/defaults.json`; optional location files
@@ -143,8 +149,9 @@ pond layers and unmapped water are not automatically included.
 
 McKerrow uses a published approximate maximum-depth parameter of **109 m** and
 LINZ's **+1 m** surface level. Its basin shape remains entirely synthetic; the
-achieved depth depends on the footprint and distance from shore. Waiuna uses the default 10 m lagoon ceiling, the gentler 0.02 slope,
-and the source's +15 m water level; its generated maximum depth is about 6 m.
+achieved depth depends on the footprint and distance from shore. Waiuna uses the default 10 m lagoon ceiling, 5% main gradient, 25 m shoreline
+transition and 25 m distance smoothing. With the source's +15 m water level,
+its generated maximum depth is about 9.24 m (bed elevation about +5.76 m).
 See each package's `metadata/water-report.json` for actual parameters, source
 links, inferred levels, exclusions and per-grid depths.
 
