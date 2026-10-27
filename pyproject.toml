@@ -5,6 +5,7 @@ readme = "README.md"
 description = "True-scale New Zealand coastal terrain packages for Cities: Skylines II"
 requires-python = ">=3.11"
 dependencies = [
+    "water-carver",
     "affine>=2.4,<4",
     "matplotlib>=3.10,<4",
     "networkx>=3,<4",
@@ -30,3 +31,9 @@ nz-terrain-rivers = "nz_terrain.rivers:main"
 nz-terrain-discover-rivers = "nz_terrain.discover_rivers:main"
 nz-terrain-validate = "nz_terrain.validate_outputs:main"
 nz-terrain-river-lab = "nz_terrain.river.lab:main"
+
+[tool.uv.workspace]
+members = ["packages/water-carver"]
+
+[tool.uv.sources]
+water-carver = { workspace = true }

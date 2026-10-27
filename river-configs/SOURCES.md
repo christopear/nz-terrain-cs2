@@ -91,3 +91,14 @@ https://services.arcgis.com/xdsHIIxuCWByZiCB/ArcGIS/rest/services/LINZ_NZ_River_
 The 2D polygon is mapped river area, not surveyed bathymetry or a guaranteed
 water boundary at a particular flow. It is not added to the existing carver's
 input automatically. See `docs/river-lab.md` for measurement limitations.
+
+
+## Polygon-carver snapshots
+
+`okarito-polygons.geojson`, `jackson-bay-polygons.geojson` and
+`takaka-polygons.geojson` contain LINZ River Name Polygons Pilot geometry from
+the public ArcGIS service (CC BY 4.0). Each snapshot records its query URLs,
+retrieval time, preset and coverage. Companion `*-openings.geojson` files record
+specific complete boundary edges excluded from bank distances, evidence and
+reference levels; these are synthetic carving annotations, not surveyed channels.
+Source: https://services.arcgis.com/xdsHIIxuCWByZiCB/ArcGIS/rest/services/LINZ_NZ_River_Name_Polygons_Pilot/FeatureServer/0

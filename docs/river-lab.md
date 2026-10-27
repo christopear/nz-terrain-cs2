@@ -6,6 +6,79 @@ scope is the lower Hollyford between Lake McKerrow and the sea, within the curre
 Jamestown playable footprint. The map boundary splits it into two segments;
 the lab does not connect them with an invented straight line.
 
+## Current polygon-carver experiment
+
+The preferred river profile is saved in
+[`water-configs/river-preferred.json`](../water-configs/river-preferred.json):
+10 m cap, 2 m shoreline transition, 5% initial gradient, 100% nominal interior
+gradient and 1 m local crease smoothing. The tanh cap softens the actual slope.
+Depth depends on distance to retained banks, not width normalisation. Existing
+lake, lagoon and seabed configurations are unchanged.
+
+The profile and smoothing now live in `water_carver.river`. The Jamestown
+polygon-only trial uses them over a matching cached sea/lake baseline:
+
+```sh
+uv run python -m nz_terrain.river.polygon_build --baseline-root /path/to/baseline-checkout
+uv run python -m nz_terrain.river.review_package --baseline-root /path/to/baseline-checkout
+```
+
+Output: `output/jamestown-polygon-rivers/`, with paired heightmaps, previews,
+metadata and a ZIP. The ordinary `--with-rivers` command still uses the legacy
+centreline pipeline; use the command above for this trial. It verifies the
+baseline location and water settings, including presence of Waiuna Lagoon.
+
+The playable and world grids use fourfold subpixel depth sampling, then average
+water-covered samples. Only polygon-centre pixels are applied; land outside the
+river footprints is unchanged. Both grids retain their existing encoding and
+rotation. Changed playable cells are averaged into the world map centre.
+Hollyford uses a synthetic reference from 1 m at the lake to 0 m at the sea;
+other polygons use 30 m masked smoothing of their original DEM surface. Absolute
+target beds are combined by taking the lower elevation, never adding depths.
+The two reviewed Hollyford connections feather into existing water over 100 m,
+with a 1.5-pixel collar at each opening to close DEM/raster classification gaps.
+
+Other polygon end caps, river-stage estimation, steep reaches, and existing
+valley detection still need review. This is an in-game trial, not a finished
+hydrology model. The historical centreline lab below is reference material.
+
+### Hollyford openings
+
+Reproduce the diagnostic using a checkout containing cached lake metadata:
+
+```sh
+uv run --all-packages python packages/water-carver/examples/inspect_hollyford_openings.py --baseline-root /path/to/baseline-checkout
+```
+
+Output: `output/jamestown-river-lab/openings/`, containing a before/after plot,
+opening candidates, retained bank geometry and an evidence report. The script
+reads the saved preference and leaves production inputs untouched.
+
+Two exterior route crossings identify the expected cutoffs:
+
+- The 121.1 m lake-end edge exactly coincides with Lake McKerrow's boundary.
+- The 174.4 m mouth edge crosses the route at 87.5 degrees, 77.2 m before its
+  downstream endpoint. This remains a candidate until checked against a sea mask.
+
+Exclude these edges from bank-distance calculation, while retaining the polygon
+as the water footprint. All island boundaries remain banks. The diagnostic
+checks both retained island lengths and the total excluded boundary length.
+The route also crosses an island twice: removing every route crossing would
+therefore be unsafe. Straight edges alone are not evidence of openings either.
+
+For broader automation, use shared boundaries with adjoining water polygons as
+primary evidence, with exterior route crossings, continuation and crossing angle
+as supporting evidence. Review ambiguous candidates. Derive banks before map
+clipping so map edges do not become dams. Different datasets may need a careful
+geometry-matching tolerance; this experiment uses exact shared boundaries.
+
+The opening diagnostic plots assume a flat water surface and only remove
+artificial river-end banks. The separate map build above adds the lake/sea
+connections and estimated water elevations for in-game review. A broad flat bed in wide reaches is
+still an accepted limitation of the selected bank-distance profile.
+
+## Historical centreline lab
+
 ## What exists in this first iteration
 
 - `src/nz_terrain/river/core.py`: existing profile solver, terrain sampler and
@@ -157,3 +230,37 @@ a deliberately simplified game channel. These are different quantities. Then:
 
 No other locations should be migrated to the replacement carver until the
 Jamestown test is reviewed in-game.
+
+
+## Additional polygon-trial presets
+
+Okarito, Jackson Bay and Takaka use the same independent river profile and
+current lagoon defaults. Each has a saved LINZ river-area snapshot and explicit
+reviewed opening edges under `river-configs/<location>-{polygons,openings}.geojson`.
+Snapshots retain full polygons returned for the playable geographic envelope;
+they do not claim complete coverage of the surrounding world.
+
+```sh
+uv run python -m nz_terrain.river.fetch_polygons --location okarito
+uv run nz-terrain --location okarito
+uv run python -m nz_terrain.river.polygon_build --location okarito --baseline-root .
+uv run python -m nz_terrain.river.review_package --location okarito --baseline-root .
+```
+
+Substitute `jackson-bay` or `takaka` as appropriate. Downloads are a separate
+explicit step; a fetch that changes polygon geometry requires reviewing existing
+opening annotations before building. Named presets, current baseline settings,
+and the original uncarved surface cache must match.
+
+Openings in these builds include exact shared lake interfaces (within a 5 cm
+matching tolerance, with an outward probe inside the lake), the 120 m Takaka
+estuary cutoff and the 325 m Arawhata mouth cutoff. Other ambiguous crossings
+remain banks. Reference river levels use the same 30 m smoothed original DEM
+estimate as the Jamestown trial outside Hollyford. They are not a hydraulic
+surface solver. No centreline fallback is applied; notably the downloaded
+Takaka river-area layer has negligible coverage along the Waikoropupu route.
+
+Bank distances use an exact spatial index of original bank segments for larger
+polygons. A regression test compares indexed distances, the resulting profile
+and smoothing with direct vector distances, including an island and an opening.
+The full source geometry is retained; there is no polygon simplification.

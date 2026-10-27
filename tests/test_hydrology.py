@@ -39,4 +39,17 @@ class WaterBedTests(unittest.TestCase):
         self.assertTrue(np.all(d>=0));self.assertTrue(np.all(d<=109))
         with self.assertRaises(ValueError):hydrology.basin_depth(mask,10,-30,600,0)
 
+    def test_lagoon_transition_matches_selected_profile(self):
+        from water_carver.river import profile
+        mask=np.zeros((201,201),bool);mask[10:-10,10:-10]=True
+        plain=hydrology.basin_depth(mask,3.5,10,200,25)
+        selected=hydrology.basin_depth(mask,3.5,10,200,25,25,.01)
+        distance=np.arctanh(plain.astype('float64')/10)*200
+        np.testing.assert_allclose(selected,profile(distance,25,10,.01,.05),atol=2e-6)
+        self.assertTrue(np.all(selected<=plain))
+        self.assertEqual(selected[0,0],0)
+        self.assertGreater(selected.max(),8)
+        for bad in [-1,float('nan')]:
+            with self.assertRaises(ValueError):hydrology.basin_depth(mask,3.5,10,200,25,bad)
+
 if __name__=='__main__':unittest.main()

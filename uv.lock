@@ -6,6 +6,12 @@ resolution-markers = [
     "python_full_version < '3.12'",
 ]
 
+[manifest]
+members = [
+    "nz-terrain",
+    "water-carver",
+]
+
 [[package]]
 name = "affine"
 version = "3.0.1"
@@ -715,6 +721,7 @@ dependencies = [
     { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
     { name = "scipy", version = "1.18.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "shapely" },
+    { name = "water-carver" },
 ]
 
 [package.metadata]
@@ -728,6 +735,7 @@ requires-dist = [
     { name = "rasterio", specifier = ">=1.4,<2" },
     { name = "scipy", specifier = ">=1.15,<2" },
     { name = "shapely", specifier = ">=2,<3" },
+    { name = "water-carver", editable = "packages/water-carver" },
 ]
 
 [[package]]
@@ -1333,4 +1341,28 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/d9/68/f1b440335057bfce71b6e50a9d09445aa2ecbd08359a337976627b8409e7/tzdata-2026.5.tar.gz", hash = "sha256:8cc73c0a0bfca7dbfa59235d60b2eff82231dee33f53d206db1acd9173cfc0a7", size = 200404, upload-time = "2026-10-03T09:23:14.143Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/94/21/1e5995a1c920cce14e4bffae20c665ec10e7ed03ab25e006cd741092b718/tzdata-2026.5-py2.py3-none-any.whl", hash = "sha256:b683bd1b6659ddcd810ff02ad09ba821d4bf1065072805063eb35c49617905ac", size = 347996, upload-time = "2026-10-03T09:23:12.535Z" },
+]
+
+[[package]]
+name = "water-carver"
+version = "0.1.0"
+source = { editable = "packages/water-carver" }
+dependencies = [
+    { name = "affine" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "numpy", version = "2.5.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "pyproj", version = "3.7.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "pyproj", version = "3.8.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "scipy", version = "1.18.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "shapely" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "affine", specifier = ">=2.4,<4" },
+    { name = "numpy", specifier = ">=2,<3" },
+    { name = "pyproj", specifier = ">=3.7,<4" },
+    { name = "scipy", specifier = ">=1.15,<2" },
+    { name = "shapely", specifier = ">=2,<3" },
 ]

@@ -1,0 +1,42 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Takaka River",
+        "objectid": 19,
+        "length_m": 120.05158924298833,
+        "shared_lake_fraction": 0.0,
+        "outward_elevations": [
+          -0.1482362300157547,
+          -0.15065254271030426,
+          -0.2529061734676361,
+          -1.4943833351135254
+        ],
+        "mid_elevation": -0.14872188866138458,
+        "kind": "sea",
+        "outside_lake": false,
+        "water_level_m": 0.0,
+        "adjoining_water_name": "sea / estuary",
+        "status": "selected after map review",
+        "evidence": "Straight channel cutoff visible in source geometry; uncarved DEM seaward probes at 25, 75 and 150 m are below sea level; visually reviewed against baseline"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            172.801806550617,
+            -40.8175653934411
+          ],
+          [
+            172.802887644674,
+            -40.8182683256047
+          ]
+        ]
+      }
+    }
+  ],
+  "attribution": "LINZ River Name Polygons Pilot and Topo50 lake polygons, CC BY 4.0.",
+  "scope": "Only these explicit polygon edges are excluded; not a universal automatic mouth classifier."
+}

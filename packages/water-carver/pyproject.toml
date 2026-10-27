@@ -1,0 +1,15 @@
+[project]
+name = "water-carver"
+version = "0.1.0"
+description = "Synthetic polygon water beds on metre-based raster grids"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["affine>=2.4,<4", "numpy>=2,<3", "pyproj>=3.7,<4", "shapely>=2,<3", "scipy>=1.15,<2"]
+
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/water_carver"]

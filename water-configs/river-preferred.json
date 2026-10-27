@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "status": "preferred for the experimental polygon-river build",
+  "profile": "bank_transition_tanh",
+  "max_depth_m": 10.0,
+  "shore_transition_m": 2.0,
+  "shore_gradient": 0.05,
+  "interior_gradient": 1.0,
+  "smoothing": {
+    "method": "local_crease_diffusion",
+    "scale_m": 1.0,
+    "shore_lock_m": 0.5,
+    "shore_blend_m": 1.5
+  },
+  "notes": [
+    "Gradients are m/m; 1.0 is 100% (45 degrees). The tanh cap softens the realised slope.",
+    "Bank distance drives depth; channel width is not used as a normalisation input.",
+    "Smoothing may fill deepest points; this is not an excavation-only smoother.",
+    "The algorithm lives in water_carver.river; Jamestown integration uses nz_terrain.river.polygon_build.",
+    "Lake, lagoon and seabed settings remain in water-configs/defaults.json and per-location overrides."
+  ]
+}
