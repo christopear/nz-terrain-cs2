@@ -78,4 +78,3 @@ def carve(z,profiles,config,affine):
             view=result[r0:r1,c0:c1]
             view[inside]=np.minimum(view[inside],target[inside]);mask[r0:r1,c0:c1]|=inside
     return result,mask
-
