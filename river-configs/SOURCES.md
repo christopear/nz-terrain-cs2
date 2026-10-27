@@ -80,3 +80,14 @@ braided river floodplains. No surveyed widths or discharge are claimed.
 
 The centreline snapshots are inputs, not a guarantee of a complete or current
 network. The exported selection report records trimming and exclusions.
+
+## Lower Hollyford river-area snapshot
+
+`jamestown-hollyford-polygons.geojson` is a separate LINZ River Name Polygons
+Pilot snapshot for the Jamestown river lab, retrieved 27 October 2026. It retains
+query URLs, geometry schema and attribution. LINZ, CC BY 4.0:
+https://services.arcgis.com/xdsHIIxuCWByZiCB/ArcGIS/rest/services/LINZ_NZ_River_Name_Polygons_Pilot/FeatureServer/0
+
+The 2D polygon is mapped river area, not surveyed bathymetry or a guaranteed
+water boundary at a particular flow. It is not added to the existing carver's
+input automatically. See `docs/river-lab.md` for measurement limitations.

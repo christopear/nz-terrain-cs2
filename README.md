@@ -149,3 +149,11 @@ File validation does not establish successful in-game water flow.
 The `.gitignore` starts from [GitHub's Python template](https://github.com/github/gitignore/blob/main/Python.gitignore),
 with project-specific cache, output and local-tool exclusions. Keep `uv.lock`
 tracked when changing dependencies.
+
+## Jamestown river development
+
+The [lower-Hollyford river lab](docs/river-lab.md) isolates river diagnostics from
+sea/lake generation. Run `uv run nz-terrain-river-lab` against an existing
+Jamestown baseline, or pass `--baseline-root /path/to/existing/checkout` from a
+worktree. It measures polygon-derived widths and original terrain cross-sections;
+it does not yet implement the replacement carver or change map packages.
