@@ -1,0 +1,18 @@
+{
+  "location": "bay-of-islands",
+  "mode": "network",
+  "routes": "bay-of-islands-network.geojson",
+  "sample_spacing_m": 10,
+  "preferred_bed_slope": 0.001,
+  "max_cut_m": 10,
+  "surface_smoothing_m": 20,
+  "minimum_river_width_m": 5,
+  "width_coefficient": 5,
+  "default_depth_m": 1.5,
+  "maximum_bottom_width_m": 24,
+  "endpoint_snap_m": 5,
+  "tributary_snap_m": 30,
+  "minimum_retained_length_m": 30,
+  "notes": "Widths are heuristic estimates from upstream mapped channel length, not measured 5 m widths. Trim headwaters within routes, retain wider downstream sections. Lake/sea domains remain independent.",
+  "named_overrides": {}
+}

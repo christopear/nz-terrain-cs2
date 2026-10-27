@@ -1,0 +1,20 @@
+{
+  "lake_depth_m": 30,
+  "distance_smoothing_m": 14,
+  "minimum_lake_area_m2": 0,
+  "overrides": {
+    "100001428": {
+      "name": "Lake McKerrow / Whakatipu Waitai",
+      "depth_m": 109,
+      "water_level_m": 1,
+      "depth_source": "https://www.tandfonline.com/doi/pdf/10.1080/00288306.1965.10426432",
+      "note": "Published approximate maximum depth; synthetic basin geometry, not surveyed bathymetry. Water level from LINZ lake polygon attribute.",
+      "dropoff_m": 600
+    }
+  },
+  "lake_gradient": 0.05,
+  "lagoon_depth_m": 10,
+  "lagoon_gradient": 0.02,
+  "sea_depth_m": 30,
+  "sea_gradient": 0.05
+}

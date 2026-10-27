@@ -1,0 +1,31 @@
+[project]
+name = "nz-terrain"
+version = "0.1.0"
+readme = "README.md"
+description = "True-scale New Zealand coastal terrain packages for Cities: Skylines II"
+requires-python = ">=3.11"
+dependencies = [
+    "affine>=2.4,<4",
+    "matplotlib>=3.10,<4",
+    "networkx>=3,<4",
+    "numpy>=2,<3",
+    "pillow>=11,<13",
+    "pyproj>=3.7,<4",
+    "rasterio>=1.4,<2",
+    "scipy>=1.15,<2",
+    "shapely>=2,<3",
+]
+
+
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nz_terrain"]
+
+[project.scripts]
+nz-terrain = "nz_terrain.terrain:main"
+nz-terrain-rivers = "nz_terrain.rivers:main"
+nz-terrain-discover-rivers = "nz_terrain.discover_rivers:main"
+nz-terrain-validate = "nz_terrain.validate_outputs:main"

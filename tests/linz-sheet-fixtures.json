@@ -1,0 +1,126 @@
+[
+  {
+    "id": "BZ09_10000_0501",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            168.0406576,
+            -44.2426806
+          ],
+          [
+            168.0352097,
+            -44.3072594
+          ],
+          [
+            168.0951687,
+            -44.3098561
+          ],
+          [
+            168.1005515,
+            -44.2452715
+          ],
+          [
+            168.0406576,
+            -44.2426806
+          ]
+        ]
+      ]
+    },
+    "source_metadata_file": "nz-elevation.s3.ap-southeast-2.amazonaws.com_west-coast_west-coast_2020-2022_dem_1m_2193_BZ09_10000_0501.json"
+  },
+  {
+    "id": "BZ09",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            168.0622682,
+            -43.9843529
+          ],
+          [
+            168.0352097,
+            -44.3072594
+          ],
+          [
+            168.3350839,
+            -44.3199292
+          ],
+          [
+            168.3605229,
+            -43.9968816
+          ],
+          [
+            168.0622682,
+            -43.9843529
+          ]
+        ]
+      ]
+    },
+    "source_metadata_file": "nz-elevation.s3.ap-southeast-2.amazonaws.com_new-zealand_new-zealand-contour_dem_8m_2193_BZ09.json"
+  },
+  {
+    "id": "CA10",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            168.3350839,
+            -44.3199292
+          ],
+          [
+            168.3092153,
+            -44.6429467
+          ],
+          [
+            168.610931,
+            -44.6549654
+          ],
+          [
+            168.6351491,
+            -44.331814
+          ],
+          [
+            168.3350839,
+            -44.3199292
+          ]
+        ]
+      ]
+    },
+    "source_metadata_file": "nz-elevation.s3.ap-southeast-2.amazonaws.com_new-zealand_new-zealand-contour_dem_8m_2193_CA10.json"
+  },
+  {
+    "id": "CA10",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            168.3350839,
+            -44.3199292
+          ],
+          [
+            168.3092153,
+            -44.6429467
+          ],
+          [
+            168.610931,
+            -44.6549654
+          ],
+          [
+            168.6351491,
+            -44.331814
+          ],
+          [
+            168.3350839,
+            -44.3199292
+          ]
+        ]
+      ]
+    },
+    "source_metadata_file": "sample.json"
+  }
+]

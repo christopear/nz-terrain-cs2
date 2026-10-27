@@ -1,0 +1,67 @@
+{
+  "jamestown": {
+    "name": "Jamestown",
+    "longitude": 168.09214,
+    "latitude": -44.35322,
+    "rotation_deg": 345,
+    "lidar_collections": [
+      "west-coast/west-coast_2020-2022/dem_1m/2193/"
+    ]
+  },
+  "takaka": {
+    "name": "Takaka",
+    "longitude": 172.80447,
+    "latitude": -40.85758,
+    "rotation_deg": 30,
+    "lidar_collections": [
+      "tasman/tasman_2020-2022/dem_1m/2193/",
+      "tasman/abel-tasman-and-golden-bay_2023/dem_1m/2193/"
+    ]
+  },
+  "port-underwood": {
+    "name": "Port Underwood",
+    "longitude": 174.05366,
+    "latitude": -41.30641,
+    "rotation_deg": 30,
+    "lidar_collections": [
+      "marlborough/marlborough_2020-2022/dem_1m/2193/"
+    ]
+  },
+  "bay-of-islands": {
+    "name": "Bay of Islands",
+    "longitude": 174.09303,
+    "latitude": -35.26098,
+    "rotation_deg": 0,
+    "lidar_collections": [
+      "northland/northland_2018-2020/dem_1m/2193/",
+      "northland/northland_2024/dem_1m/2193/"
+    ]
+  },
+  "milford-sound": {
+    "name": "Milford Sound",
+    "longitude": 167.95738,
+    "latitude": -44.69578,
+    "rotation_deg": 0,
+    "lidar_collections": [
+      "southland/southland_2020-2023/dem_1m/2193/"
+    ]
+  },
+  "jackson-bay": {
+    "name": "Jackson Bay",
+    "longitude": 168.66856,
+    "latitude": -44.01286,
+    "rotation_deg": 0,
+    "lidar_collections": [
+      "west-coast/west-coast_2020-2022/dem_1m/2193/"
+    ]
+  },
+  "okarito": {
+    "name": "Okarito",
+    "longitude": 170.22337,
+    "latitude": -43.21401,
+    "rotation_deg": 305,
+    "lidar_collections": [
+      "west-coast/west-coast_2020-2022/dem_1m/2193/"
+    ]
+  }
+}

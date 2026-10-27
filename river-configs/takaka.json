@@ -1,0 +1,33 @@
+{
+  "location": "takaka",
+  "routes": "takaka-routes.geojson",
+  "sample_spacing_m": 10,
+  "preferred_bed_slope": 0.0025,
+  "max_cut_m": 10,
+  "surface_smoothing_m": 35,
+  "rivers": {
+    "takaka": {
+      "bottom_width_m": 18,
+      "bank_width_m": 48,
+      "depth_m": 3
+    },
+    "waingaro": {
+      "bottom_width_m": 14,
+      "bank_width_m": 36,
+      "depth_m": 2.5
+    },
+    "anatoki": {
+      "bottom_width_m": 12,
+      "bank_width_m": 32,
+      "depth_m": 2.5
+    },
+    "waikoropupu": {
+      "bottom_width_m": 10,
+      "bank_width_m": 26,
+      "depth_m": 2,
+      "trim_upstream_m": 4000
+    }
+  },
+  "outlet_bed_m": -3,
+  "notes": "Experimental dimensions, not measured river bathymetry or guaranteed water depths. Preferred slope is soft; no elevation or horizontal scale exaggeration. Waikoropupu: leave the first 4 km of clipped mountainous route unchanged; initial experiment covers its lower valley and estuary connection."
+}
